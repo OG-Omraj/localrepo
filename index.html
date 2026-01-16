@@ -1,3 +1,63 @@
-</p>This is a new repo</p>
-</p>This is a new feature (dropdown)</p> 
-</p>This is a new feature (button)</p> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Interactive Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the Crazy Page!</h1>
+    <p>This is a new repo with awesome features.</p>
+    <p>This is a new feature (dropdown) - now interactive!</p>
+    <p>This is a new feature (button) - click it!</p>
+    <p>Let's add more text to make it lively. Imagine this page coming alive with colors and movements!</p>
+    <p>Here's another paragraph to fill the space and keep you engaged.</p>
+    <p>Feel the energy? This is just the beginning!</p>
+
+    <button id="colorBtn">Change Background Color</button>
+    <button id="bounceBtn">Make Text Bounce</button>
+    <button id="counterBtn">Increment Counter</button>
+    <p id="counter">Counter: 0</p>
+
+    <form id="nameForm">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" placeholder="Your name">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="greeting"></p>
+
+    <script>
+        const colorBtn = document.getElementById('colorBtn');
+        const bounceBtn = document.getElementById('bounceBtn');
+        const counterBtn = document.getElementById('counterBtn');
+        const counter = document.getElementById('counter');
+        const nameForm = document.getElementById('nameForm');
+        const greeting = document.getElementById('greeting');
+
+        let count = 0;
+
+        colorBtn.addEventListener('click', () => {
+            document.body.style.backgroundColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        });
+
+        bounceBtn.addEventListener('click', () => {
+            document.querySelectorAll('p').forEach(p => {
+                p.classList.toggle('bounce');
+            });
+        });
+
+        counterBtn.addEventListener('click', () => {
+            count++;
+            counter.textContent = `Counter: ${count}`;
+        });
+
+        nameForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            greeting.textContent = `Hello, ${name}! Welcome to the crazy world!`;
+            document.getElementById('name').value = '';
+        });
+    </script>
+</body>
+</html>
